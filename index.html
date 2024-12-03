@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025校园招聘</title>
+    <!-- 引入Bootstrap CSS -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入Google字体 -->
     <link href="style.css" rel="stylesheet">
+    <!-- 自定义样式 -->
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -14,23 +18,15 @@
             color: #333;
         }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* 导航栏样式 */
+        .navbar {
             background: linear-gradient(45deg, #333, #555);
-            color: #fff;
-            padding: 15px 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .logo a {
-            display: inline-block;
-        }
-
-        .logo img {
+        .navbar-brand img {
             max-width: 60px;
-         animation: spin 5s linear infinite;
+            animation: spin 5s linear infinite;
         }
 
         @keyframes spin {
@@ -42,29 +38,21 @@
             }
         }
 
-        .logo img:hover {
+        .navbar-brand img:hover {
             transform: scale(1.1);
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
+        .navbar-nav .nav-link {
             color: #fff;
-            text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
         }
 
-        nav a:hover {
+        .navbar-nav .nav-link:hover {
             color: #e9c46a;
         }
 
+        /* Hero部分样式 */
         .hero {
             background: url('https://consumer.huawei.com/content/dam/huawei-cbg-site/greate-china/cn/mkt/v4/about-us/recruitment.jpg') no-repeat center center/cover;
             color: #fff;
@@ -77,11 +65,17 @@
         }
 
         .hero h1 {
-            font-size: 36px;
+            font-size: 48px;
             margin: 0;
+            font-weight: 700;
         }
 
-        .btn {
+        .hero p {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .btn-custom {
             background: #e76f51;
             color: #fff;
             padding: 15px 30px;
@@ -92,24 +86,27 @@
             margin-top: 30px;
             border-radius: 25px;
             transition: background 0.3s;
-            font-size: 16px;
+            font-size: 18px;
         }
 
-        .btn:hover {
+        .btn-custom:hover {
             background: #d7593a;
         }
 
+        /* 内容部分样式 */
         section {
             padding: 50px 20px;
             margin: 20px 0;
             border-radius: 10px;
-            background: white;
+            background: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
             color: #e76f51;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
         }
 
         .position {
@@ -117,7 +114,6 @@
             padding: 20px;
             margin: 15px 0;
             border-radius: 5px;
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
             transition: background 0.3s;
         }
 
@@ -125,11 +121,17 @@
             background: #f0f0f0;
         }
 
+        .position h3 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
         footer {
             text-align: center;
-            padding: 15px 0;
+            padding: 20px 0;
             background: #333;
             color: #fff;
+            margin-top: 40px;
         }
 
         ul {
@@ -138,10 +140,11 @@
 
         ul li {
             margin-bottom: 10px;
+            font-size: 16px;
         }
 
         a.email {
-            color: #e8491d;
+            color: #e76f51;
             text-decoration: underline;
         }
 
@@ -151,147 +154,206 @@
 
         /* 响应式设计 */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-                margin-top: 10px;
-            }
-
             .hero {
-                padding: 60px 20px;
+                padding: 80px 20px;
             }
 
-            .btn {
-                padding: 10px 20px;
-                margin-top: 20px;
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 20px;
+            }
+
+            .btn-custom {
+                padding: 12px 25px;
+                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
-<header>
-    <div class="logo">
-        <a href="/">
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="/">
             <img src="https://www.svgrepo.com/show/303157/react-logo.svg" alt="公司Logo">
         </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="切换导航">
+            <span class="navbar-toggler-icon" style="color: #fff;"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">关于我们</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#positions">招聘职位</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#benefits">员工福利</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#apply">申请方式</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <nav>
-        <ul>
-            <li><a href="#about">关于我们</a></li>
-            <li><a href="#positions">招聘职位</a></li>
-            <li><a href="#benefits">员工福利</a></li>
-            <li><a href="#apply">申请方式</a></li>
-        </ul>
-    </nav>
-</header>
+</nav>
 
+<!-- Hero部分 -->
 <section class="hero">
     <h1>加入我们，成就未来</h1>
     <p>运用你的才华和创造力，共同打造美好的明天。</p>
-    <a href="#apply" class="btn">立即申请</a>
+    <a href="#apply" class="btn btn-custom">立即申请</a>
 </section>
 
-<section id="about" class="about">
-    <h2>关于我们</h2>
-    <p>我们是一家充满创新精神的企业，致力于为客户提供优质的服务和产品。我们的核心价值观是以客户为中心，通过先进的技术和卓越的团队合作来实现我们的愿景。</p>
-    <p>我们的产品线涵盖多个领域，包括高科技电子产品、智能家居解决方案以及环保材料等。在研发方面，我们拥有一支经验丰富且充满创造力的团队，始终紧跟行业趋势，不断推出符合市场需求的新产品，以满足客户不断变化的需求。</p>
-    <p>作为一家注重可持续发展的公司，我们在生产过程中坚持环保原则，努力减少对环境的影响。同时，我们也积极参与社会公益活动，回馈社会，推动社区的发展。</p>
-    <p>在我们公司，人才是最宝贵的资源。我们重视员工的成长与发展，提供多样化的培训和晋升机会，创造一个鼓励创新和自我提升的工作环境。我们相信，只有团队中每一位成员都能发挥出最佳状态，我们才能更好地服务我们的客户。</p>
-    <p>我们期待优秀的你加入我们的团队，共同推动企业的成长与发展。如果你对创新充满热情，愿意迎接挑战，欢迎与我们联系！你的未来，从这里开始。</p>
-</section>
-
-<section id="positions" class="positions">
-    <h2>招聘职位</h2>
-    <div class="position">
-        <h3>产品经理</h3>
-        <p>负责产品策略和规划，推动产品的开发与市场推广。</p>
-    </div>
-    <div class="position">
-        <h3>软件工程师</h3>
-        <p>参与软件的开发与维护，协助团队解决技术难题。</p>
-    </div>
-    <div class="position">
-        <h3>市场专员</h3>
-        <p>负责公司产品的市场推广与品牌建设，提升市场知名度。</p>
-    </div>
-    <div class="position">
-        <h3>人力资源经理</h3>
-        <p>负责招聘、培训和员工关系管理，推动人才发展的战略实施。</p>
-    </div>
-    <div class="position">
-        <h3>UI/UX设计师</h3>
-        <p>设计用户界面，提升用户体验，确保产品的用户友好性和美观性。</p>
-    </div>
-    <div class="position">
-        <h3>数据分析师</h3>
-        <p>收集、分析数据，生成报告以支持业务决策和战略规划。</p>
-    </div>
-    <div class="position">
-        <h3>技术支持工程师</h3>
-        <p>为客户提供技术支持和问题解决，确保产品的高效使用和客户满意度。</p>
-    </div>
-    <div class="position">
-        <h3>财务分析师</h3>
-        <p>负责财务数据的分析，帮助公司进行预算和财务决策。</p>
-    </div>
-    <div class="position">
-        <h3>行政助理</h3>
-        <p>协助公司日常行政事务，管理文件和安排会议。</p>
-    </div>
-    <div class="position">
-        <h3>客户服务代表</h3>
-        <p>通过电话或邮件为客户提供支持和解决问题，维护客户满意度。</p>
-    </div>
-    <div class="position">
-        <h3>销售专员</h3>
-        <p>负责销售产品和服务，维持客户关系并开拓新的市场机会。</p>
-    </div>
-    <div class="position">
-        <h3>公关经理</h3>
-        <p>策划和管理公司的公关活动，维护公司与外界的良好关系。</p>
-    </div>
-    <div class="position">
-        <h3>采购员</h3>
-        <p>负责公司物资采购，确保材料供应及时和成本控制。</p>
+<!-- 关于我们 -->
+<section id="about">
+    <div class="container">
+        <h2>关于我们</h2>
+        <p>
+            我们是一家充满创新精神的企业，致力于为客户提供优质的服务和产品。我们的核心价值观是以客户为中心，通过先进的技术和卓越的团队合作来实现我们的愿景。</p>
+        <p>
+            我们的产品线涵盖多个领域，包括高科技电子产品、智能家居解决方案以及环保材料等。在研发方面，我们拥有一支经验丰富且充满创造力的团队，始终紧跟行业趋势，不断推出符合市场需求的新产品，以满足客户不断变化的需求。</p>
+        <p>
+            作为一家注重可持续发展的公司，我们在生产过程中坚持环保原则，努力减少对环境的影响。同时，我们也积极参与社会公益活动，回馈社会，推动社区的发展。</p>
+        <p>
+            在我们公司，人才是最宝贵的资源。我们重视员工的成长与发展，提供多样化的培训和晋升机会，创造一个鼓励创新和自我提升的工作环境。我们相信，只有团队中每一位成员都能发挥出最佳状态，我们才能更好地服务我们的客户。</p>
+        <p>
+            我们期待优秀的你加入我们的团队，共同推动企业的成长与发展。如果你对创新充满热情，愿意迎接挑战，欢迎与我们联系！你的未来，从这里开始。</p>
     </div>
 </section>
 
-
-<section id="benefits" class="benefits">
-    <h2>员工福利</h2>
-    <ul>
-        <li>灵活的工作时间</li>
-        <li>优秀的团队氛围</li>
-        <li>健全的职业发展规划</li>
-        <li>丰厚的薪酬福利</li>
-        <li>各类培训和学习机会</li>
-        <li>健康保险和年度体检</li>
-        <li>带薪休假和病假政策</li>
-        <li>节日和生日福利</li>
-        <li>员工旅游和团建活动</li>
-        <li>舒适的办公环境</li>
-        <li>员工折扣和福利计划</li>
-        <li>午餐补贴或免费零食饮料</li>
-    </ul>
+<!-- 招聘职位 -->
+<section id="positions">
+    <div class="container">
+        <h2>招聘职位</h2>
+        <div class="row">
+            <!-- 职位列表 -->
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>产品经理</h3>
+                    <p>负责产品策略和规划，推动产品的开发与市场推广。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>软件工程师</h3>
+                    <p>参与软件的开发与维护，协助团队解决技术难题。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>市场专员</h3>
+                    <p>负责公司产品的市场推广与品牌建设，提升市场知名度。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>人力资源经理</h3>
+                    <p>负责招聘、培训和员工关系管理，推动人才发展的战略实施。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>UI/UX设计师</h3>
+                    <p>设计用户界面，提升用户体验，确保产品的用户友好性和美观性。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>数据分析师</h3>
+                    <p>收集、分析数据，生成报告以支持业务决策和战略规划。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>技术支持工程师</h3>
+                    <p>为客户提供技术支持和问题解决，确保产品的高效使用和客户满意度。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>财务分析师</h3>
+                    <p>负责财务数据的分析，帮助公司进行预算和财务决策。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>行政助理</h3>
+                    <p>协助公司日常行政事务，管理文件和安排会议。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>客户服务代表</h3>
+                    <p>通过电话或邮件为客户提供支持和解决问题，维护客户满意度。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>销售专员</h3>
+                    <p>负责销售产品和服务，维持客户关系并开拓新的市场机会。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>公关经理</h3>
+                    <p>策划和管理公司的公关活动，维护公司与外界的良好关系。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="position">
+                    <h3>采购员</h3>
+                    <p>负责公司物资采购，确保材料供应及时和成本控制。</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-
-<section id="apply" class="apply">
-    <h2>申请方式</h2>
-    <p>请将您的简历发送至：<a href="mailto:2940806490@qq.com" class="email">2940806490@qq.com</a></p>
-    <p style="color: red">备注身高体重</p>
-    <p style="color: red">简历至少附带3张生活照</p>
-    <p style="color: red">电话，家庭住址为必填项</p>
-    <p>申请截止日期：2025年1月1日</p>
+<!-- 员工福利 -->
+<section id="benefits">
+    <div class="container">
+        <h2>员工福利</h2>
+        <ul>
+            <li>灵活的工作时间</li>
+            <li>优秀的团队氛围</li>
+            <li>健全的职业发展规划</li>
+            <li>丰厚的薪酬福利</li>
+            <li>各类培训和学习机会</li>
+            <li>健康保险和年度体检</li>
+            <li>带薪休假和病假政策</li>
+            <li>节日和生日福利</li>
+            <li>员工旅游和团建活动</li>
+            <li>舒适的办公环境</li>
+            <li>员工折扣和福利计划</li>
+            <li>午餐补贴或免费零食饮料</li>
+        </ul>
+    </div>
 </section>
 
+<!-- 申请方式 -->
+<section id="apply">
+    <div class="container">
+        <h2>申请方式</h2>
+        <p>请将您的简历发送至：<a href="mailto:2940806490@qq.com" class="email">2940806490@qq.com</a></p>
+        <p style="color: red;">备注身高体重</p>
+        <p style="color: red;">简历至少附带3张生活照</p>
+        <p style="color: red;">电话，家庭住址为必填项</p>
+        <p>申请截止日期：2025年1月1日</p>
+    </div>
+</section>
+
+<!-- 页脚 -->
 <footer>
     <p>&copy; 2024 红篇里集团. All rights reserved.</p>
 </footer>
+
+<!-- 引入Bootstrap JS和依赖 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
